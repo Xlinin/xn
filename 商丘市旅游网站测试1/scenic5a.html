@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>商丘概况</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 页脚样式 */
+        /* 确保整个页面内容可以滑动 */
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh; /* 确保页面最小高度为视口高度 */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 主内容区域 */
+        main {
+            flex: 1; /* 使主内容区域占据页面剩余空间 */
+            padding: 20px;
+        }
+
+        /* 页脚样式 */
+        footer {
+            background-color: #f5f5f5;
+            color: #4b3621;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            width: 100%;
+        }
+
+        /* 页脚内容样式 */
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 5px 0;
+        }
+
+        .footer-content a {
+            color: #4b3621;
+            text-decoration: none;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+
+        //
+        body {
+            background-color: #f5f5dc;
+            font-family: "Times New Roman", serif;
+            color: #4b3621;
+        }
+        header, .modal-content {
+            background-color: #fff8dc;
+        }
+        .login-register {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .login-register button {
+            margin: 0 10px;
+            padding: 8px 16px;
+            cursor: pointer;
+            background-color: #d2b48c;
+            color: #4b3621;
+            border: none;
+        }
+        .login-register button:hover {
+            background-color: #c19a6b;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff8dc;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #4b3621;
+            background-color: #faf0e6;
+        }
+        .modal-content button {
+            width: 100%;
+            padding: 10px;
+            background-color: #d2b48c;
+            color: #4b3621;
+            border: none;
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff8dc;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .nav-links a.disabled {
+            pointer-events: none;
+            color: #a9a9a9;
+        }
+        .container {
+            display: flex; /* 使用flexbox布局 */
+            align-items: center; /* 垂直居中对齐 */
+        }
+
+        .bus-image {
+            width: 300px; /* 设置图片宽度 */
+            margin-right: 20px; /* 图片和文字之间的间距 */
+        }
+
+        .link-text {
+            font-size: 20px; /* 设置文字大小 */
+            color: #007bff; /* 设置链接颜色 */
+            cursor: pointer; /* 鼠标悬停显示为指针 */
+            text-decoration: underline; /* 链接文字加下划线 */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="logo.webp" alt="商丘文旅 Logo">
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="overview.html">商丘概况</a></li>
+            <li class="dropdown">
+                <a href="#">景区</a>
+                <div class="dropdown-content">
+                    <a href="scenic5a.html" class="disabled">5A级景区</a>
+                    <a href="scenic4a.html" class="disabled">4A级景区</a>
+                    <a href="scenic3a.html" class="disabled">3A级景区</a>
+                    <a href="scenic2a.html" class="disabled">2A级景区</a>
+                    <a href="museum.html" class="disabled">博物馆</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#">美食</a>
+                <div class="dropdown-content food-menu">
+                    <a href="local-food.html" class="disabled">本地美食</a>
+                    <a href="street-food.html" class="disabled">街头小吃</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#">酒店</a>
+                <div class="dropdown-content hotel-menu">
+                    <a href="luxury-hotels.html" class="disabled">豪华酒店</a>
+                    <a href="budget-hotels.html" class="disabled">经济型酒店</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#">交通</a>
+                <div class="dropdown-content transport-menu">
+                    <a href="bus.html" class="disabled">公交</a>
+                    <a href="taxi.html" class="disabled">出租车</a>
+                    <a href="火车高铁.html" class="disabled">火车高铁</a>
+                </div>
+            </li>
+        </ul>
+        <div class="login-register">
+            <button id="login-button" onclick="showModal('login')">登录</button>
+            <button id="register-button" onclick="showModal('register')">注册</button>
+            <button id="logout-button" onclick="logout()">退出登录</button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h1 class="section-title">景区</h1>
+        <div class="scenic-links">
+            <a href="scenic5a.html">5A级景区</a>
+            <a href="scenic4a.html">4A级景区</a>
+            <a href="scenic3a.html">3A级景区</a>
+            <a href="scenic2a.html">2A级景区</a>
+            <a href="museum.html">博物馆</a>
+        </div>
+        <h2>商丘市5A级景点</h2>
+        <h3>芒砀山    </h3>
+        <h6>󰥫
+            商丘必打卡景点榜 No.1</h6>
+        <div class="container">
+            <!-- 火车图片 -->
+            <img src="5A.jpg" alt="Train" class="bus-image">
+            <!-- 跳转链接 -->
+            <h3>欢迎各位旅客来商丘游玩，如果查看景区请点击</h3><br>
+            <a href="https://you.ctrip.com/sight/yongcheng1578/73022.html?renderPlatform=&allianceid=866656&sid=22313200" class="link-text" target="_blank">查看</a>
+
+        </div>
+    </section>
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 薛宁. 保留所有权利。</p>
+            <p>&copy;抖音点点关注</p>
+            <p>地址: 商丘市某街道123号 | 联系电话: 123-456-7890</p>
+            <p>关注我们:
+                <a href="https://weibo.com/yourprofile" target="_blank">微博</a> |
+                <a href="https://www.douyin.com/user/MS4wLjABAAAAzRgh63T1dgXScaF8cbTtaNx17JN9R1mt0Bq0_DJusVs?from_tab_name=main" target="_blank">抖音</a> |
+                <a href="https://facebook.com/yourprofile" target="_blank">脸书</a>
+            </p>
+        </div>
+    </footer>
+</main>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <h2>登录</h2>
+        <input type="text" id="loginUsername" placeholder="用户名">
+        <input type="password" id="loginPassword" placeholder="密码">
+        <button onclick="login()">登录</button>
+        <button onclick="closeModal('login')">取消</button>
+    </div>
+</div>
+
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <h2>注册</h2>
+        <input type="text" id="registerUsername" placeholder="用户名">
+        <input type="password" id="registerPassword" placeholder="密码">
+        <button onclick="register()">注册</button>
+        <button onclick="closeModal('register')">取消</button>
+    </div>
+</div>
+
+<script>
+    let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    let users = JSON.parse(localStorage.getItem('users')) || {};
+
+    function showModal(modalId) {
+        document.getElementById(modalId + 'Modal').style.display = 'flex';
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId + 'Modal').style.display = 'none';
+    }
+
+    function login() {
+        const username = document.getElementById('loginUsername').value;
+        const password = document.getElementById('loginPassword').value;
+
+        if (users[username] === password) {
+            isLoggedIn = true;
+            localStorage.setItem('isLoggedIn', 'true');
+            document.getElementById('login-button').style.display = 'none';
+            document.getElementById('register-button').style.display = 'none';
+            document.getElementById('logout-button').style.display = 'block';
+
+            const disabledLinks = document.querySelectorAll('.nav-links a.disabled');
+            disabledLinks.forEach(link => {
+                link.classList.remove('disabled');
+                link.removeAttribute('onclick');
+            });
+            closeModal('login');
+        } else {
+            alert('用户名或密码错误');
+        }
+    }
+
+    function register() {
+        const username = document.getElementById('registerUsername').value;
+        const password = document.getElementById('registerPassword').value;
+
+        if (username && password) {
+            users[username] = password;
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('注册成功');
+            closeModal('register');
+        } else {
+            alert('请填写完整的注册信息');
+        }
+    }
+
+    function logout() {
+        isLoggedIn = false;
+        localStorage.setItem('isLoggedIn', 'false');
+        document.getElementById('login-button').style.display = 'block';
+        document.getElementById('register-button').style.display = 'block';
+        document.getElementById('logout-button').style.display = 'none';
+
+        // 禁用所有链接
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(link => {
+            link.classList.add('disabled');
+            link.setAttribute('onclick', 'checkLogin(event, "' + link.getAttribute('href') + '")');
+        });
+
+        // 跳转到 index.html 页面
+        window.location.href = 'index.html';
+    }
+
+    function checkLogin(event, href) {
+        if (!isLoggedIn) {
+            event.preventDefault();
+            showModal('login');
+        } else {
+            window.location.href = href;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        if (isLoggedIn) {
+            document.getElementById('login-button').style.display = 'none';
+            document.getElementById('register-button').style.display = 'none';
+            document.getElementById('logout-button').style.display = 'block';
+
+            const disabledLinks = document.querySelectorAll('.nav-links a.disabled');
+            disabledLinks.forEach(link => {
+                link.classList.remove('disabled');
+                link.removeAttribute('onclick');
+            });
+        }
+    });
+</script>
+</body>
+</html>

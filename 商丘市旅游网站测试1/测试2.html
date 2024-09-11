@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>商丘市旅游导向</title>
+    <style>
+        .tour-guide h1 {
+            text-align: center;
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .tour-guide p {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .image-gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            margin: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            animation: scale 3s infinite alternate;
+        }
+
+        @keyframes scale {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.5);
+            }
+        }
+    </style>
+</head>
+<body>
+<section class="tour-guide">
+    <h1>————————商丘市旅游导向——————————</h1>
+    <p>探索商丘的美丽景点，了解当地的历史文化，享受美食和舒适的住宿体验。</p>
+</section>
+
+<section id="image-container-1" class="image-gallery">
+    <!-- 图片将在这里动态插入 -->
+</section>
+
+<section class="tour-guide">
+    <h1>————————————热门推荐————————————</h1>
+    <p>探索商丘的美丽景点，了解当地的历史文化，享受美食和舒适的住宿体验。</p>
+</section>
+
+<section id="image-container-2" class="image-gallery">
+    <!-- 第二组图片将在这里动态插入 -->
+</section>
+
+<section id="image-container-3" class="image-gallery">
+    <!-- 第三组图片将在这里动态插入 -->
+</section>
+
+<script>
+    const images1 = [
+        {src: '景区.jpg', alt: '景区'},
+        {src: '美食.webp', alt: '美食'},
+        {src: '酒店.webp', alt: '酒店'},
+        {src: '交通.jpg', alt: '交通'}
+    ];
+
+    const images2 = [
+        {src: '5A.jpg', alt: '景区'},
+        {src: '4A.jpg', alt: '景区'},
+        {src: '汉梁王陵.jpg', alt: '酒店'},
+        {src: '夫子山.jpg', alt: '交通'}
+    ];
+
+    const images3 = [
+        {src: '博物馆.jpg', alt: '景区'},
+        {src: '应天书院.jpg', alt: '景区'},
+        {src: '火神台.jpg', alt: '景区'},
+        {src: '汉梁文化公园.jpg', alt: '景区'}
+    ];
+
+    function createImageGallery(containerId, imageArray) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = ''; // 清空容器中的内容
+        imageArray.forEach(image => {
+            const imgElement = document.createElement('img');
+            imgElement.src = image.src;
+            imgElement.alt = image.alt;
+            imgElement.style.width = '200px';  // 设置宽度
+            imgElement.style.height = '200px'; // 设置高度
+            container.appendChild(imgElement);
+        });
+    }
+
+    createImageGallery('image-container-1', images1);
+    createImageGallery('image-container-2', images2);
+    createImageGallery('image-container-3', images3);
+</script>
+</body>
+</html>
